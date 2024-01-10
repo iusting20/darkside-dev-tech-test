@@ -20,7 +20,6 @@ class CustomerController extends Controller
      */
     public function create(Request $request)
     {
-        return $request;
     }
 
     /**
@@ -28,7 +27,7 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $request;
     }
 
     /**
