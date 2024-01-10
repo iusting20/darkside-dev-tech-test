@@ -21,4 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 // this function within the CustomerController will add a user to our database / disk
-Route::post('/add_customer', [CustomerController::class, 'create']);
+Route::post('/add_customer', [CustomerController::class, 'store']);
