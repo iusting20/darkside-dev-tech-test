@@ -1,5 +1,5 @@
 <template>
-    <h3>Hello, Vuejs with Laravel</h3>
+    <h3>Darkside Developments Tech Test</h3>
     <h1>Create a new user</h1>
 
     <div>
@@ -46,14 +46,26 @@ export default {
     },
     methods: {
         addUser() {
-            // Handle form submission logic here
-            console.log(
-                "Form submitted",
-                this.name,
-                this.email,
-                this.phone,
-                this.address
-            );
+            axios
+                .post("/api/add_customer", {
+                    name: this.name,
+                    email: this.email,
+                    phone: this.phone,
+                    address: this.address,
+                })
+                .then((response) => {
+                    // handle successful response
+                    console.log(response.data);
+
+                    // display success message and clear form, etc.
+                    // ...
+                })
+                .catch((error) => {
+                    // log error
+                    console.error(error);
+                    // display error message to UI
+                    // ...
+                });
         },
     },
 };
