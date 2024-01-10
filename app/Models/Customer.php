@@ -30,14 +30,8 @@ class Customer extends Model
 
             // save the file to the 'customer_files' directory on the 'local' disk
             $filePath = Storage::disk('local')->put('customer_files/' . $filename, $fileData);
-
-            // extra check if customer data has been saved to disk
-            if ($filePath) {
-                // customer data has been saved successfully
-                Log::info('Customer data has been saved successfully');
-            } else {
-                Log::error('Customer data has not been saved');
-            }
+            
+            return 'Customer data has been saved successfully!';
 
         } catch (\Exception $e) {
 
