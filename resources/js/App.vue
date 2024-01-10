@@ -59,6 +59,7 @@ export default {
 
                     // display success message and clear form, etc.
                     // ...
+                    this.clearForm();
                 })
                 .catch((error) => {
                     // log error
@@ -66,6 +67,12 @@ export default {
                     // display error message to UI
                     // ...
                 });
+        },
+        clearForm() {
+            this.name = "";
+            this.email = "";
+            this.phone = "";
+            this.address = "";
         },
     },
 };
