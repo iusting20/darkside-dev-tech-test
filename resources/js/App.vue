@@ -1,6 +1,6 @@
 <template>
     <h3>Darkside Developments Tech Test</h3>
-    <h1>Create a new user</h1>
+    <h1>Insert customer data:</h1>
 
     <div>
         <p>*Please fill in all fields before submitting the form.</p>
