@@ -29,9 +29,17 @@ class Customer extends Model
             $filename = $filename ?? uniqid('customer_file_') . '.txt';
 
             // save the file to the 'customer_files' directory on the 'local' disk
-            $filePath = Storage::disk('local')->put('customer_files/' . $filename, $customerData);
+            $fileUploaded = Storage::disk('local')->put('customer_files/' . $filename, $customerData);
+            $filePath = Storage::disk('local')->path('customer_files/' . $filename);
+
+            // in case of working on a windows machine file path will look like this:  "D:\folder\file" so we are converting it to this format:  "D:/folder/file"
+            $filePath = str_replace('\\', '/', $filePath);
+
             
-            return 'Customer data has been saved successfully!';
+            return [
+                'msg' => 'Customer data has been saved successfully!', 
+                'fileName' => $filename
+            ];
 
         } catch (\Exception $e) {
 
