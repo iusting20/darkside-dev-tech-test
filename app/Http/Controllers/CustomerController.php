@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Customer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use App\Http\Requests\CustomerDataFormRequest;
+
+
 
 class CustomerController extends Controller
 {
@@ -25,7 +29,7 @@ class CustomerController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, Customer $customerModel)
+    public function store(CustomerDataFormRequest $request, Customer $customerModel)
     {
         // the parameter passed to this function is the customer data
         return $customerModel->saveCustomerDataToDisk($request->getContent());
