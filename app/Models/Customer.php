@@ -21,7 +21,7 @@ class Customer extends Model
 
 
     // this function will save the customer data to disk, just like the tech test brief specified
-    public function saveCustomerDataToDisk($fileData)
+    public function saveCustomerDataToDisk($customerData)
     {
         try {
 
@@ -29,7 +29,7 @@ class Customer extends Model
             $filename = $filename ?? uniqid('customer_file_') . '.txt';
 
             // save the file to the 'customer_files' directory on the 'local' disk
-            $filePath = Storage::disk('local')->put('customer_files/' . $filename, $fileData);
+            $filePath = Storage::disk('local')->put('customer_files/' . $filename, $customerData);
             
             return 'Customer data has been saved successfully!';
 
