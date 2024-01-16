@@ -38,7 +38,9 @@
         <br />
 
         <!-- make button clickable only when all fields are filled in -->
-        <button @click="addUser">Add User</button>
+        <button @click="saveCustomerDataToDisk">
+            Save Customer Data to Disk
+        </button>
     </div>
 </template>
 <script>
@@ -65,7 +67,7 @@ export default {
         },
     },
     methods: {
-        addUser() {
+        saveCustomerDataToDisk() {
             // initialise prompt
             this.dataSubmitted = false;
 
