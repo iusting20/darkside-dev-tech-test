@@ -29,7 +29,7 @@ class CustomerController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(CustomerDataFormRequest $request, Customer $customerModel)
+    public function store_on_disk(CustomerDataFormRequest $request, Customer $customerModel)
     {
         // the parameter passed to this function is the customer data
         return $customerModel->saveCustomerDataToDisk($request->getContent());

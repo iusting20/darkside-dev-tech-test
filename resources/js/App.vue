@@ -41,6 +41,10 @@
         <button @click="saveCustomerDataToDisk">
             Save Customer Data to Disk
         </button>
+        {{ " " }}
+        <button @click="saveCustomerDataToDatabase">
+            Save Customer Data to Database
+        </button>
     </div>
 </template>
 <script>
@@ -77,7 +81,40 @@ export default {
             // if there are no validation errors send call to API
             if (this.v$.$errors.length == 0) {
                 axios
-                    .post("/api/add_customer", {
+                    .post("/api/add_customer_to_disk", {
+                        name: this.name,
+                        email: this.email,
+                        phone: this.phone,
+                        address: this.address,
+                    })
+                    .then((response) => {
+                        // handle successful response
+                        console.log(response.data);
+
+                        // display success message and clear form, etc.
+                        // ...
+                        this.clearForm();
+                        this.dataSubmitted = true;
+                    })
+                    .catch((error) => {
+                        // log error
+                        console.error(error);
+                        // display error message to UI
+                        // ...
+                    });
+            }
+        },
+        saveCustomerDataToDatabase() {
+            // initialise prompt
+            this.dataSubmitted = false;
+
+            // validates fields
+            this.v$.$validate();
+
+            // if there are no validation errors send call to API
+            if (this.v$.$errors.length == 0) {
+                axios
+                    .post("/api/add_customer_to_disk", {
                         name: this.name,
                         email: this.email,
                         phone: this.phone,
