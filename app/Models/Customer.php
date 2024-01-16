@@ -60,9 +60,11 @@ class Customer extends Model
             $customer->phone = $customerData["phone"];
             $customer->address = $customerData["address"];
             $customer->save();
+
            
             return [
-                'msg' => 'Customer data has been saved successfully in Database!'
+                'msg' => 'Customer data has been saved successfully in Database!',
+                'entryId' => $customer->id
             ];
 
         } catch (\Exception $e) {

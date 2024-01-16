@@ -39,7 +39,11 @@ class CustomerController extends Controller
        /**
      * Store a newly created resource in storage.
      */
-    public function store_in_database(CustomerDataFormRequest $request, Customer $customerModel)
+    
+    /**
+     * Store a newly created resource in database.
+     */
+     public function store_in_database(CustomerDataFormRequest $request, Customer $customerModel)
     {
         // the parameter passed to this function is the customer data
         return $customerModel->saveCustomerDataToDatabase($request);
