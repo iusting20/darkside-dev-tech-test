@@ -20,7 +20,7 @@ class Customer extends Model
     ];
 
 
-    // this function will save the customer data to disk, just like the tech test brief specified
+    // this function will save the customer data to disk
     public function saveCustomerDataToDisk($customerData)
     {
         try {
@@ -40,6 +40,29 @@ class Customer extends Model
             return [
                 'msg' => 'Customer data has been saved successfully!', 
                 'fileName' => $filename
+            ];
+
+        } catch (\Exception $e) {
+
+            // log the error
+            return $e;
+        }
+    }
+
+    // this function will save the customer data to our sqlite database
+    public function saveCustomerDataToDatabase($customerData)
+    {
+        try {
+
+            $customer = new Customer();
+            $customer->name = $customerData["name"];
+            $customer->email = $customerData["email"];
+            $customer->phone = $customerData["phone"];
+            $customer->address = $customerData["address"];
+            $customer->save();
+           
+            return [
+                'msg' => 'Customer data has been saved successfully in Database!'
             ];
 
         } catch (\Exception $e) {

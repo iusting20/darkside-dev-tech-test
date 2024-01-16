@@ -114,7 +114,7 @@ export default {
             // if there are no validation errors send call to API
             if (this.v$.$errors.length == 0) {
                 axios
-                    .post("/api/add_customer_to_disk", {
+                    .post("/api/add_customer_to_database", {
                         name: this.name,
                         email: this.email,
                         phone: this.phone,
